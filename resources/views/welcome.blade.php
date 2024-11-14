@@ -16,8 +16,6 @@
         </style>
     </head>
     <body class="antialiased">
-        <h1>hoiiiiii</h1>
-        <h1>Hallo ik ben tester
         </h1>
         <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
             @if (Route::has('login'))
