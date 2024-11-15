@@ -1,3 +1,3 @@
-<x-layouts.base>
+<x-base-layout>
     <h1>Home</h1>
-</x-layouts.base>
+</x-base-layout>
