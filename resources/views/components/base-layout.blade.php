@@ -17,7 +17,7 @@
             <nav>
                 <ul class="flex space-x-6">
                     <li><a href="/" class="hover:underline">Home</a></li>
-                    <li><a href="#" class="hover:underline">Wedstrijden</a></li>
+                    <li><a href="/contact" class="hover:underline">Contact</a></li>
                     <li><a href="#" class="hover:underline">Gokken</a></li>
                     @auth
                     <form method="POST" action="{{ route('logout') }}" class="inline">
