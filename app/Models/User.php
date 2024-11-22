@@ -21,12 +21,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'team_id', // Nieuw veld
+        'role',    // Nieuw veld
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
+     * De verborgen attributen voor arrays.
      */
     protected $hidden = [
         'password',
@@ -34,12 +34,17 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
+     * De casts van attributen.
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
     ];
+
+    /**
+     * Relatie met de team-tabel.
+     */
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
+    }
 }
