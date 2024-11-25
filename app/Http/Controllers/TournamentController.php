@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Team;
 use App\Models\Tournament;
+use App\Models\Game;
 
 class TournamentController extends Controller
 {
@@ -55,6 +56,36 @@ class TournamentController extends Controller
         return redirect('/')->with('success', 'Succesvol ingeschreven!');
     }
 
+    public function index()
+    {
+        // Haal het actieve toernooi op
+        $tournament = Tournament::where('started', true)->latest()->first();
+
+        $schedule = [];
+        if ($tournament) {
+            // Haal alle wedstrijden van dit toernooi op
+            $games = Game::with(['team1', 'team2'])
+                ->where('tournament_id', $tournament->id)
+                ->orderBy('id')
+                ->get();
+
+            // Format de data
+            $schedule = $games->map(function ($game) {
+                return [
+                    'team_1' => $game->team1->name,
+                    'team_2' => $game->team2->name,
+                    'team_1_score' => $game->team_1_score,
+                    'team_2_score' => $game->team_2_score,
+                ];
+            });
+        }
+
+        // Stuur de data door naar de view
+        return view('homepage', [
+            'schedule' => $schedule,
+            'tournament' => $tournament,
+        ]);
+    }
 
         public function generateSchedule(Tournament $tournament)
     {
