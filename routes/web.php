@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TournamentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +26,11 @@ Route::get('/dashboard', function () {
 Route::get('/contact', function () {
     return view('contact');
 });
+
+
+Route::get('/inschrijven', [TournamentController::class, 'showRegistrationForm'])->name('registration.form');
+Route::post('/inschrijven', [TournamentController::class, 'registerPlayer']);
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
