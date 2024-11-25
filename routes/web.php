@@ -32,6 +32,10 @@ Route::get('/inschrijven', [TournamentController::class, 'showRegistrationForm']
 Route::post('/inschrijven', [TournamentController::class, 'registerPlayer']);
 
 
+Route::get('/competitie/{tournament}', [TournamentController::class, 'generateSchedule'])->name('competition.schedule');
+
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

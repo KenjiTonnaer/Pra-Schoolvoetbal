@@ -21,8 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'team_id', // Nieuw veld
-        'role',    // Nieuw veld
+        'team_id', 
+        'role',
     ];
 
     /**

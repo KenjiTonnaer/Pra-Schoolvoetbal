@@ -54,4 +54,25 @@ class TournamentController extends Controller
 
         return redirect('/')->with('success', 'Succesvol ingeschreven!');
     }
-}
+
+
+        public function generateSchedule(Tournament $tournament)
+    {
+        $teams = $tournament->teams;
+
+        $matches = [];
+        foreach ($teams as $team1) {
+            foreach ($teams as $team2) {
+                if ($team1->id != $team2->id) {
+                    $matches[] = [
+                        'team1' => $team1->name,
+                        'team2' => $team2->name,
+                    ];
+                }
+            }
+        }
+
+        return view('tournament.schedule', compact('tournament', 'matches'));
+    }
+
+    }

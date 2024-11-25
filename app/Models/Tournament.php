@@ -8,4 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Tournament extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'max_teams',
+        'started',
+    ];
+
+    public function teams()
+    {
+        return $this->belongsToMany(Team::class, 'tournament_teams')->withTimestamps();
+    }
+
+    public function games()
+    {
+        return $this->hasMany(Game::class);
+    }
 }

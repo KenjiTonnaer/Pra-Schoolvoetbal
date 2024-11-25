@@ -27,7 +27,7 @@
             </div>
             <div class="mt-8 flex justify-center">
                 <button class="bg-green-500 text-white text-lg font-semibold py-2 px-6 rounded hover:bg-green-600">
-                    Schrijf je in
+                    <a href="/inschrijven">Schrijf je in</a>
                 </button>
             </div>
         </div>
