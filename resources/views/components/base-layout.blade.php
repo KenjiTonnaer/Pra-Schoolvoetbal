@@ -20,19 +20,32 @@
                     <li><a href="/contact" class="hover:underline">Contact</a></li>
                     <li><a href="#" class="hover:underline">Gokken</a></li>
                     @auth
-                    <form method="POST" action="{{ route('logout') }}" class="inline">
-                        @csrf
-                        <button type="submit" class="text-white hover:text-white">Log Out</button>
-                    </form>
-                @endauth
-                @guest
-                    <a href="{{ route('login') }}" class="font-semibold text-white hover:text-white">Log in</a>
-                    <a href="{{ route('register') }}" class="ml-4 font-semibold text-white hover:text-white">Register</a>
-                @endguest
+                        <!-- Profile Link -->
+                        <li>
+                            <a href="{{ route('profile.edit') }}" class="hover:underline">Profile</a>
+                        </li>
+
+                        <!-- Logout Button -->
+                        <li>
+                            <form method="POST" action="{{ route('logout') }}" class="inline">
+                                @csrf
+                                <button type="submit" class="text-white hover:underline">Log Out</button>
+                            </form>
+                        </li>
+                    @endauth
+                    @guest
+                        <li>
+                            <a href="{{ route('login') }}" class="font-semibold text-white hover:underline">Log in</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('register') }}" class="ml-4 font-semibold text-white hover:underline">Register</a>
+                        </li>
+                    @endguest
                 </ul>
             </nav>
         </div>
     </header>
+
 
 
     <main>

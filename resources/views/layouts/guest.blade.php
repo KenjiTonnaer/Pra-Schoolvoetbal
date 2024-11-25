@@ -14,11 +14,8 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
-            <div>
     <body class="font-sans text-gray-900 antialiased bg-gray-100">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-[#ffffff]">
+        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-white">
             <!-- Logo -->
             <div class="mb-8">
                 <a href="/">
@@ -26,7 +23,6 @@
                 </a>
             </div>
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
             <!-- Form Container -->
             <div class="w-full sm:max-w-md px-6 py-8 bg-white shadow-lg rounded-lg border border-gray-200">
                 <h2 class="text-center text-xl font-semibold text-[rgba(0,157,224,1)] mb-6">Welkom bij Schoolvoetbal</h2>
@@ -34,7 +30,7 @@
             </div>
 
             <!-- Footer -->
-            <footer class="mt-6 text-white text-sm">
+            <footer class="mt-6 text-gray-700 text-sm">
                 <p>&copy; 2024 Schoolvoetbal Toernooi.</p>
             </footer>
         </div>
