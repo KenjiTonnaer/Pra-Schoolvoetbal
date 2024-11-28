@@ -41,7 +41,7 @@
                 <p class="mt-4">Alle belangrijke informatie over het toernooi.</p>
             </div>
             <div class="mt-8 flex justify-center">
-                <button class="bg-green-500 text-white text-lg font-semibold py-2 px-6 rounded hover:bg-green-600">
+                <button class="bg-blue-500 text-white text-lg font-semibold py-2 px-6 rounded hover:bg-blue-600">
                     <a href="/inschrijven">Schrijf je in</a>
                 </button>
             </div>
