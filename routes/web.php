@@ -33,6 +33,7 @@ Route::post('/inschrijven', [TournamentController::class, 'registerPlayer']);
 
 Route::get('/competitie/{tournament}', [TournamentController::class, 'generateSchedule'])->name('competition.schedule');
 
+Route::get('/generate-schedule/{tournamentId}', [TournamentController::class, 'generateSchedule'])->name('generate.schedule');
 
 
 Route::middleware('auth')->group(function () {

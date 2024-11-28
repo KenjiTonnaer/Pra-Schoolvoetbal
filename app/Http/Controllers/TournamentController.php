@@ -58,52 +58,56 @@ class TournamentController extends Controller
 
     public function index()
     {
-        // Haal het actieve toernooi op
-        $tournament = Tournament::where('started', true)->latest()->first();
+        $tournament = Tournament::latest('started')->first();
 
-        $schedule = [];
         if ($tournament) {
-            // Haal alle wedstrijden van dit toernooi op
-            $games = Game::with(['team1', 'team2'])
-                ->where('tournament_id', $tournament->id)
-                ->orderBy('id')
-                ->get();
-
-            // Format de data
-            $schedule = $games->map(function ($game) {
-                return [
-                    'team_1' => $game->team1->name,
-                    'team_2' => $game->team2->name,
-                    'team_1_score' => $game->team_1_score,
-                    'team_2_score' => $game->team_2_score,
-                ];
-            });
+            $schedule = Game::where('tournament_id', $tournament->id)
+                ->with(['team1', 'team2'])
+                ->get()
+                ->map(function ($game) {
+                    return [
+                        'team_1' => $game->team1->name,
+                        'team_1_score' => $game->team_1_score,
+                        'team_2' => $game->team2->name,
+                        'team_2_score' => $game->team_2_score,
+                    ];
+                });
+        } else {
+            $schedule = [];
         }
 
-        // Stuur de data door naar de view
         return view('homepage', [
-            'schedule' => $schedule,
             'tournament' => $tournament,
+            'schedule' => $schedule,
         ]);
     }
 
-        public function generateSchedule(Tournament $tournament)
+    public function generateSchedule($tournamentId)
     {
-        $teams = $tournament->teams;
+        // Haal alle teams op die meedoen aan het toernooi
+        $teams = Team::all();
 
-        $matches = [];
-        foreach ($teams as $team1) {
-            foreach ($teams as $team2) {
-                if ($team1->id != $team2->id) {
-                    $matches[] = [
-                        'team1' => $team1->name,
-                        'team2' => $team2->name,
-                    ];
-                }
+        // Controleer of er minstens twee teams zijn
+        if ($teams->count() < 2) {
+            return redirect()->back()->with('error', 'Niet genoeg teams om wedstrijden in te plannen.');
+        }
+
+        // Genereer het schema (round-robin)
+        foreach ($teams as $index1 => $team1) {
+            for ($index2 = $index1 + 1; $index2 < $teams->count(); $index2++) {
+                $team2 = $teams[$index2];
+
+                // Voeg een nieuwe wedstrijd toe
+                Game::create([
+                    'tournament_id' => $tournamentId,
+                    'team_1' => $team1->id,
+                    'team_2' => $team2->id,
+                    'team_1_score' => 0, // Startwaarde
+                    'team_2_score' => 0, // Startwaarde
+                ]);
             }
         }
 
-        return view('tournament.schedule', compact('tournament', 'matches'));
+        return redirect()->route('homepage')->with('success', 'Wedstrijden succesvol ingepland.');
     }
-
-    }
+}
