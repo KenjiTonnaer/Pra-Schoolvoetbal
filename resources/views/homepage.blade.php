@@ -3,7 +3,7 @@
 
     <div class="container mx-auto grid grid-cols-3 grid-rows-2 gap-4 mt-10 h-screen">
         <!-- Linksboven: Schema voetbaltoernooi -->
-        <div class="col-span-2 row-span-2 bg-gray-100 rounded-lg shadow-lg p-8 overflow-auto">
+        <div class="col-span-2 row-span-2 bg-gray-200 rounded-lg shadow-lg p-8 overflow-auto">
             <h2 class="text-2xl font-bold mb-4">Schema voetbaltoernooi</h2>
 
             @if ($tournament)
@@ -35,7 +35,7 @@
         </div>
 
         <!-- Rechtsboven: Informatie over schoolvoetbal -->
-        <div class="bg-yellow-100 rounded-lg shadow-lg p-8 flex flex-col justify-between">
+        <div class="bg-gray-200 rounded-lg shadow-lg p-8 flex flex-col justify-between">
             <div>
                 <h2 class="text-2xl font-bold">Informatie over het schoolvoetbal</h2>
                 <p class="mt-4">Alle belangrijke informatie over het toernooi.</p>
