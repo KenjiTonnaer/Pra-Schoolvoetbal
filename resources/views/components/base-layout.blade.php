@@ -11,40 +11,38 @@
 
     <header class="bg-[#009DE0] text-white py-4 shadow-md">
         <div class="container mx-auto flex items-center justify-between px-4">
+            <!-- Logo -->
             <div class="flex items-center">
-                <img src="{{ asset('img/SchoolvoetbalLogo.jpg') }}" alt="Schoolvoetbal Logo" class="h-20 w-auto">
+                <img src="{{ asset('img/SchoolvoetbalLogo.jpg') }}" alt="Schoolvoetbal Logo" class="h-16 w-auto">
             </div>
-            <nav>
-                <ul class="flex space-x-6">
+
+            <!-- Navigation Links -->
+            <nav class="absolute left-1/2 transform -translate-x-1/2">
+                <ul class="flex space-x-8 text-lg font-semibold">
                     <li><a href="/" class="hover:underline">Home</a></li>
                     <li><a href="/contact" class="hover:underline">Contact</a></li>
                     <li><a href="#" class="hover:underline">Gokken</a></li>
-                    @auth
-                        <!-- Profile Link -->
-                        <li>
-                            <a href="{{ route('profile.edit') }}" class="hover:underline">Profile</a>
-                        </li>
-
-                        <!-- Logout Button -->
-                        <li>
-                            <form method="POST" action="{{ route('logout') }}" class="inline">
-                                @csrf
-                                <button type="submit" class="text-white hover:underline">Log Out</button>
-                            </form>
-                        </li>
-                    @endauth
-                    @guest
-                        <li>
-                            <a href="{{ route('login') }}" class="font-semibold text-white hover:underline">Log in</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('register') }}" class="ml-4 font-semibold text-white hover:underline">Register</a>
-                        </li>
-                    @endguest
                 </ul>
             </nav>
+
+            <!-- Authentication/Account Links -->
+            <div class="flex items-center space-x-6 text-lg font-semibold">
+                @auth
+                    <a href="{{ route('profile.edit') }}" class="hover:underline">Account beheren</a>
+                    <form method="POST" action="{{ route('logout') }}" class="inline">
+                        @csrf
+                        <button type="submit" class="hover:underline">Uitloggen</button>
+                    </form>
+                @endauth
+                @guest
+                    <a href="{{ route('login') }}" class="hover:underline">Inloggen</a>
+                    <a href="{{ route('register') }}" class="hover:underline">Registreren</a>
+                @endguest
+            </div>
         </div>
     </header>
+
+
 
 
 
