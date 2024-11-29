@@ -48,9 +48,15 @@
                 <p class="mt-4">Alle belangrijke informatie over het toernooi.</p>
             </div>
             <div class="mt-8 flex justify-center">
-                <button class="bg-blue-500 text-white text-lg font-semibold py-2 px-6 rounded hover:bg-blue-600">
-                    <a href="/inschrijven">Schrijf je in</a>
-                </button>
+            @auth
+            <button class="bg-blue-500 text-white text-lg font-semibold py-2 px-6 rounded hover:bg-blue-600">
+                <a href="/inschrijven">Schrijf je in</a>
+            </button>
+            @endauth
+            @guest
+                <a class="bg-blue-500 text-white text-lg font-semibold py-2 px-6 rounded hover:bg-blue-600" href="{{ route('login') }}" class="hover:underline">Inloggen</a>
+            @endguest
+
             </div>
         </div>
     </div>
