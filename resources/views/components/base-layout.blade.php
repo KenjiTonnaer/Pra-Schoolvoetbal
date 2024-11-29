@@ -21,7 +21,7 @@
                 <ul class="flex space-x-8 text-lg font-semibold">
                     <li><a href="/" class="hover:underline">Home</a></li>
                     <li><a href="/contact" class="hover:underline">Contact</a></li>
-                    <li><a href="#" class="hover:underline">Gokken</a></li>
+                    <li><a href="/gokken" class="hover:underline">Gokken</a></li>
                 </ul>
             </nav>
 

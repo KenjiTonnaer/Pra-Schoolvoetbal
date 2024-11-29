@@ -26,6 +26,9 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
+Route::get('/gokken', function () {
+    return view('gokken');
+});
 
 Route::get('/inschrijven', [TournamentController::class, 'showRegistrationForm'])->name('registration.form');
 Route::post('/inschrijven', [TournamentController::class, 'registerPlayer']);
