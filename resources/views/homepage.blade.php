@@ -44,8 +44,9 @@
         <!-- Informatie -->
         <div class="bg-gray-200 rounded-lg shadow-lg p-8 flex flex-col justify-between">
             <div>
-                <h2 class="text-2xl font-bold">Informatie over het schoolvoetbal</h2>
-                <p class="mt-4">Alle belangrijke informatie over het toernooi.</p>
+                <h2 class="text-2xl font-bold">Hier wat extra informatie:</h2>
+                <p class="mt-4">we spelen een zogenaamd round-robin tournooi. Waarin elk team 1 keer tegen elkaar speelt voor punten.</p>
+                <p class="mt-5">Veel succes en veel plezier!</p>
             </div>
             <div class="mt-8 flex justify-center">
             @auth
