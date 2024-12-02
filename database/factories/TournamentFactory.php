@@ -13,7 +13,7 @@ class TournamentFactory extends Factory
     {
         return [
             'title' => $this->faker->word(),
-            'max_teams' => $this->faker->numberBetween(1, 10),
+            'max_teams' => 10,
             'started' => $this->faker->dateTimeThisYear(),
         ];
     }

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tournament extends Model
 {
-    use HasFactory; // Gebruik de trait hier
+    use HasFactory;
 
     protected $fillable = [
         'title',

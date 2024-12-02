@@ -17,8 +17,8 @@ class GameFactory extends Factory
             'tournament_id' => Tournament::factory(),  // Verbindt de game met een tournament
             'team_1' => Team::factory(),  // Verbindt de game met team 1
             'team_2' => Team::factory(),  // Verbindt de game met team 2
-            'team_1_score' => $this->faker->numberBetween(0, 5),
-            'team_2_score' => $this->faker->numberBetween(0, 5),
+            'team_1_score' => 0,
+            'team_2_score' => 0,
         ];
     }
 }
