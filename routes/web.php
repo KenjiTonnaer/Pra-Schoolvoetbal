@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\GamesController;
 use App\Http\Controllers\TournamentController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,6 +48,8 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/games/{id}/edit', [GamesController::class, 'edit'])->name('games.edit');
     Route::post('/games/{id}/update', [GamesController::class, 'update'])->name('games.update');
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+    Route::delete('/admin/team/{id}', [AdminController::class, 'deleteTeam'])->name('admin.team.delete');
 });
 
 
