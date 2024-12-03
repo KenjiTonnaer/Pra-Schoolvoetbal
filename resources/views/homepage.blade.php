@@ -17,6 +17,7 @@
                                 <th class="border border-gray-400 px-4 py-2">Score Team 1</th>
                                 <th class="border border-gray-400 px-4 py-2">Team 2</th>
                                 <th class="border border-gray-400 px-4 py-2">Score Team 2</th>
+                                <th class="border border-gray-400 px-4 py-2">Admin</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -26,6 +27,14 @@
                                     <td class="border border-gray-400 px-4 py-2">{{ $game['team_1_score'] }}</td>
                                     <td class="border border-gray-400 px-4 py-2">{{ $game['team_2'] }}</td>
                                     <td class="border border-gray-400 px-4 py-2">{{ $game['team_2_score'] }}</td>
+                                    @if (auth()->user() && auth()->user()->is_Admin())
+                                    <td class="border border-gray-400 px-4 py-2">
+                                        <a href="{{ route('games.edit', $game['id']) }}"
+                                           class="text-blue-500 hover:text-blue-700">
+                                           Aanpassen
+                                        </a>
+                                    </td>
+                                @endif
                                 </tr>
                             @endforeach
                         </tbody>

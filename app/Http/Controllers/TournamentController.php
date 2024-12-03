@@ -45,7 +45,7 @@ class TournamentController extends Controller
 
         $team->tournaments()->attach($request->tournament_id);
 
-        return redirect('/')->with('success', 'Succesvol ingeschreven!');
+        return redirect('/');
     }
 
     public function index()
@@ -58,6 +58,7 @@ class TournamentController extends Controller
                 ->get()
                 ->map(function ($game) {
                     return [
+                        'id' => $game->id,
                         'team_1' => $game->team1->name,
                         'team_1_score' => $game->team_1_score,
                         'team_2' => $game->team2->name,
@@ -96,6 +97,6 @@ class TournamentController extends Controller
             }
         }
 
-        return redirect()->route('homepage')->with('success', 'Wedstrijden succesvol ingepland.');
+        return redirect()->route('homepage');
     }
 }

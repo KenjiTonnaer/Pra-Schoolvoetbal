@@ -21,7 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'team_id', 
+        'team_id',
         'role',
     ];
 
@@ -47,4 +47,10 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Team::class);
     }
+
+    public function is_admin()
+    {
+        return $this->role === 'admin';
+    }
+
 }

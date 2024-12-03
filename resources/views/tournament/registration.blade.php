@@ -49,6 +49,12 @@
                 class="w-full px-6 py-3 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-600 transition">
                 Inschrijven
             </button>
+            @if ($errors->any())
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+                    <span class="block sm:inline">{{ $errors->first() }}</span>
+                </div>
+            @endif
+
         </form>
     </main>
 
