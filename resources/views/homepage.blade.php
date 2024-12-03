@@ -17,7 +17,6 @@
                                 <th class="border border-gray-400 px-4 py-2">Score Team 1</th>
                                 <th class="border border-gray-400 px-4 py-2">Team 2</th>
                                 <th class="border border-gray-400 px-4 py-2">Score Team 2</th>
-                                <th class="border border-gray-400 px-4 py-2">Admin</th>
                             </tr>
                         </thead>
                         <tbody>
