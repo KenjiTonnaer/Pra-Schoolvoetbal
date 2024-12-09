@@ -26,7 +26,7 @@
                                     <td class="border border-gray-400 px-4 py-2">{{ $game['team_1_score'] }}</td>
                                     <td class="border border-gray-400 px-4 py-2">{{ $game['team_2'] }}</td>
                                     <td class="border border-gray-400 px-4 py-2">{{ $game['team_2_score'] }}</td>
-                                    @if (auth()->user() && auth()->user()->is_Admin())
+                                    @if (auth()->user() && (auth()->user()->is_referee()))
                                     <td class="border border-gray-400 px-4 py-2">
                                         <a href="{{ route('games.edit', $game['id']) }}"
                                            class="text-blue-500 hover:text-blue-700">

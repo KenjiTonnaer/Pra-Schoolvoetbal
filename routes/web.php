@@ -46,11 +46,13 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/games/{id}/edit', [GamesController::class, 'edit'])->name('games.edit');
-    Route::post('/games/{id}/update', [GamesController::class, 'update'])->name('games.update');
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
     Route::delete('/admin/team/{id}', [AdminController::class, 'deleteTeam'])->name('admin.team.delete');
 });
 
+Route::middleware(['auth', 'referee'])->group(function () {
+    Route::get('/games/{id}/edit', [GamesController::class, 'edit'])->name('games.edit');
+    Route::post('/games/{id}/update', [GamesController::class, 'update'])->name('games.update');
+});
 
 require __DIR__.'/auth.php';

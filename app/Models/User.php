@@ -53,4 +53,8 @@ class User extends Authenticatable
         return $this->role === 'admin';
     }
 
+    public function is_referee()
+    {
+        return $this->role === 'referee';
+    }
 }
