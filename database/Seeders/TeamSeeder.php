@@ -9,7 +9,7 @@ class TeamSeeder extends Seeder
 {
     public function run(): void
     {
-        // Maak 10 teams aan
-        Team::factory(10)->create();
+
+        Team::factory(2)->create();
     }
 }
