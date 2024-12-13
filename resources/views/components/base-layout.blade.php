@@ -56,7 +56,7 @@
 
     <footer class="bg-[#009DE0] text-white py-4 mt-8">
         <div class="container mx-auto text-center">
-            <p>&copy; 2024 Schoolvoetbal.</p>
+            <p>&copy; 2024 Schoolvoetbal. Kenji, Diégo, Youssef</p>
         </div>
     </footer>
 </body>
