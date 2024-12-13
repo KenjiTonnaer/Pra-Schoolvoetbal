@@ -21,6 +21,7 @@
                 <ul class="flex space-x-8 text-lg font-semibold">
                     <li><a href="/" class="hover:underline">Home</a></li>
                     <li><a href="/contact" class="hover:underline">Contact</a></li>
+                    <li><a href="/teams" class="hover:underline">Teams</a></li>
                     <li> @if (auth()->user() && auth()->user()->is_Admin())
                             <a href="{{ route('admin.index') }}">Admin Dashboard</a>
                         @endif

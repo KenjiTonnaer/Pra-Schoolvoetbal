@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\GamesController;
+use App\Http\Controllers\TeamsController;
 use App\Http\Controllers\TournamentController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,11 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
+
+
+Route::get('/teams', [TeamsController::class, 'index'])->name('teams.index');
+Route::get('/teams/{id}/edit', [TeamsController::class, 'edit'])->name('teams.edit');
+Route::put('/teams/{id}', [TeamsController::class, 'update'])->name('teams.update');
 
 Route::get('/inschrijven', [TournamentController::class, 'showRegistrationForm'])->name('registration.form');
 Route::post('/inschrijven', [TournamentController::class, 'registerPlayer']);
