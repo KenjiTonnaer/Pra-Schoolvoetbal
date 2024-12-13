@@ -10,6 +10,6 @@ class TeamSeeder extends Seeder
     public function run(): void
     {
         // Maak 10 teams aan
-        \App\Models\Team::factory(10)->create();
+        Team::factory(10)->create();
     }
 }

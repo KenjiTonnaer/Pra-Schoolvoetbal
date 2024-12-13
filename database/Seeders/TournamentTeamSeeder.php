@@ -13,6 +13,6 @@ class TournamentTeamSeeder extends Seeder
 
     public function run(): void
     {
-        \App\Models\TournamentTeam::factory(10)->create();
+        TournamentTeam::factory(10)->create();
     }
 }

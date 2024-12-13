@@ -10,6 +10,6 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         // Maak 10 gebruikers aan
-        \App\Models\User::factory(10)->create();
+        User::factory(10)->create();
     }
 }

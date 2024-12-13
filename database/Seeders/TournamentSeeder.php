@@ -9,6 +9,6 @@ class TournamentSeeder extends Seeder
 {
     public function run(): void
     {
-        \App\Models\Tournament::factory(10)->create();
+        Tournament::factory(2)->create();
     }
 }
