@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -8,6 +9,7 @@ use App\Models\Game;
 
 class TournamentController extends Controller
 {
+    // Toon inschrijfformulier
     public function showRegistrationForm()
     {
         $tournaments = Tournament::all();
@@ -16,6 +18,7 @@ class TournamentController extends Controller
         return view('tournament.registration', compact('tournaments', 'teams'));
     }
 
+    // Speler registreren voor een toernooi
     public function registerPlayer(Request $request)
     {
         $request->validate([
@@ -45,12 +48,18 @@ class TournamentController extends Controller
 
         $team->tournaments()->attach($request->tournament_id);
 
-        return redirect('/');
+        return redirect('/')->with('success', 'Speler succesvol geregistreerd!');
     }
 
-    public function index()
+    // Homepage tonen met schema en dropdown
+    public function index(Request $request)
     {
-        $tournament = Tournament::latest('started')->first();
+        $tournaments = Tournament::all();
+        $selectedTournamentId = $request->input('tournament');
+
+        $tournament = $selectedTournamentId
+            ? Tournament::find($selectedTournamentId)
+            : ($tournaments->first() ?? null); // Gebruik het eerste toernooi als fallback
 
         if ($tournament) {
             $schedule = Game::where('tournament_id', $tournament->id)
@@ -70,17 +79,26 @@ class TournamentController extends Controller
         }
 
         return view('homepage', [
+            'tournaments' => $tournaments,
             'tournament' => $tournament,
             'schedule' => $schedule,
+            'selectedTournamentId' => $selectedTournamentId,
         ]);
     }
 
+    // Wedstrijdschema genereren voor een toernooi
     public function generateSchedule($tournamentId)
     {
-        $teams = Team::all();
+        $tournament = Tournament::findOrFail($tournamentId);
+        $teams = $tournament->teams;
 
         if ($teams->count() < 2) {
             return redirect()->back()->with('error', 'Niet genoeg teams om wedstrijden in te plannen.');
+        }
+
+        // Controleer of er al wedstrijden bestaan
+        if (Game::where('tournament_id', $tournamentId)->exists()) {
+            return redirect()->back()->with('error', 'Er zijn al wedstrijden gegenereerd voor dit toernooi.');
         }
 
         foreach ($teams as $index1 => $team1) {
@@ -97,6 +115,25 @@ class TournamentController extends Controller
             }
         }
 
-        return redirect()->route('homepage');
+        return redirect()->route('homepage')->with('success', 'Wedstrijden succesvol gegenereerd!');
+    }
+
+    // Dropdown logica
+    public function dropdown(Request $request)
+    {
+        $selectedTournamentId = $request->input('tournament');
+
+        if ($selectedTournamentId) {
+            // Haal teams op voor het geselecteerde toernooi
+            $tournament = Tournament::findOrFail($selectedTournamentId);
+            $teams = $tournament->teams; // Teams voor dit toernooi
+        } else {
+            // Als er geen toernooi is geselecteerd, toon alle teams
+            $teams = Team::all();
+        }
+
+        $tournaments = Tournament::all();
+
+        return view('homepage', compact('teams', 'tournaments', 'selectedTournamentId'));
     }
 }

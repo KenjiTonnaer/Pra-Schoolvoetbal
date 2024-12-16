@@ -6,6 +6,22 @@
         <div class="col-span-2 row-span-2 bg-gray-200 rounded-lg shadow-lg p-8 overflow-auto">
             <h2 class="text-2xl font-bold mb-4">Schema voetbaltoernooi</h2>
 
+            <!-- Dropdown voor toernooi selectie -->
+            <form method="GET" action="{{ route('homepage') }}" class="mb-6">
+                <label for="tournament" class="block text-lg font-semibold mb-2">Kies een toernooi:</label>
+                <select name="tournament" id="tournament" class="border rounded-lg w-full px-4 py-2">
+                    <option value="">Selecteer een toernooi</option>
+                    @foreach ($tournaments as $tournamentItem)
+                        <option value="{{ $tournamentItem->id }}" {{ $selectedTournamentId == $tournamentItem->id ? 'selected' : '' }}>
+                            {{ $tournamentItem->title }}
+                        </option>
+                    @endforeach
+                </select>
+                <button type="submit" class="bg-blue-500 text-white text-lg font-semibold py-2 px-6 rounded hover:bg-blue-600 mt-4">
+                    Weergeven
+                </button>
+            </form>
+
             @if ($tournament)
                 <p class="mb-4">Toernooi: <strong>{{ $tournament->title }}</strong></p>
 
@@ -53,7 +69,7 @@
         <div class="bg-gray-200 rounded-lg shadow-lg p-8 flex flex-col justify-between">
             <div>
                 <h2 class="text-2xl font-bold">Hier wat extra informatie:</h2>
-                <p class="mt-4">we spelen een zogenaamd round-robin tournooi. Waarin elk team 1 keer tegen elkaar speelt voor punten.</p>
+                <p class="mt-4">We spelen een zogenaamd round-robin toernooi. Waarin elk team 1 keer tegen elkaar speelt voor punten.</p>
                 <p class="mt-5">Veel succes en veel plezier!</p>
             </div>
             <div class="mt-8 flex justify-center">
